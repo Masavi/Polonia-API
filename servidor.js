@@ -3,9 +3,6 @@ const bodyParser = require('body-parser');
 const {Alumno, Curso} = require('./clienteMongo.js');
 const app = express();
 
-// use port 3000 unless there exists a preconfigured port
-const PORT = process.env.port || 3000;
-
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -220,11 +217,4 @@ app.delete('/api/cursos/:id/', (req, res) => {
 
 
 // -------------- Listen & Port --------------
-
-
-
-
-
-app.listen(PORT, () => {
-    console.log(`Servidor corriendo en el puerto ${PORT}`);
-});
+app.listen(process.env.PORT || 5000);
